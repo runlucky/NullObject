@@ -3,13 +3,15 @@ namespace NullObject
 {
     public class NullUser : IUser, INullObject
     {
-        public int ID
+        public static NullUser Instance = new NullUser();
+
+        public int ID => default(int);
+        public string Name
         {
-            get => default(int);
+            get => string.Empty;
             set { }
         }
-        public string Name => string.Empty;
-        public bool IsManager() => default(bool);
+
         public void SayName() { }
     }
 }
