@@ -12,24 +12,23 @@ namespace NullObject.Tests
         [TestMethod]
         public void testUser()
         {
-            IUser user = new User
-            {
-                Name = "TestName"
-            };
-
-            user.SayName();
-            user.Name.Is("TestName");
-            user.IsNull().IsFalse();
+            var user = new User();
+            SayName(user, "TestName").IsFalse();
         }
 
         [TestMethod]
         public void testNullUser()
         {
             var user = NullUser.Instance;
+            SayName(user, string.Empty).IsTrue();
+        }
 
+        private bool SayName(IUser user, string name)
+        {
+            user.Name = name;
             user.SayName();
-            user.Name.Is(string.Empty);
-            user.IsNull().IsTrue();
+            user.Name.Is(name);
+            return user.IsNull();
         }
 
         [TestMethod]
