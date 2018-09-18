@@ -3,9 +3,8 @@ namespace NullObject
 {
     public interface IUser
     {
-        int ID { get; set; }
-        string Name { get; }
-        bool IsManager();
+        int ID { get; }
+        string Name { get; set; }
         void SayName();
     }
 }
